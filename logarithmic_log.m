@@ -1,0 +1,28 @@
+function [img_negative] = logarithmic_log(img,c)
+
+
+[H W l]=size(img);
+img_negative=zeros(H,W);
+img_negative=double(img_negative);
+if l >1
+for i=1:H
+    for j=1:W
+       img_negative(i,j)=img(i,j,1)*0.7+img(i,j,2)*0.2+img(i,j,3)*0.1; 
+    end
+end
+img_negative=im2double(img_negative);
+
+else 
+    img_negative=im2double(img);
+end
+
+for i=1:H
+    for j=1:W
+
+img_negative(i,j)= c*log(img_negative(i,j)+1) ;
+
+    end
+end
+img_negative=im2uint8(img_negative);
+
+end

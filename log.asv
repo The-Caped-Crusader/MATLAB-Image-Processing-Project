@@ -1,0 +1,21 @@
+function [output] = logarithmic_log(img)
+[H W l]=size(img);
+img_log=zeros(H,W);
+img_log=double(img_log);
+if l>1
+for i=1:H
+    for j=1:W
+       img_log(i,j)=img(i,j,1)*0.7+img(i,j,2)*0.2+img(i,j,3)*0.1; 
+    end
+end
+img_log=uint8(img_log);
+else
+    img_log=img;
+end
+img_log=double(img_log);
+
+     output=uint8(1*log(1+img_log).* ((265 - 1)/log(265)));
+
+    
+
+end
